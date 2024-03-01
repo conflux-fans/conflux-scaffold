@@ -10,8 +10,10 @@ export type ScaffoldConfig = {
 };
 
 const scaffoldConfig = {
-  // The networks on which your DApp is live
+  // The networks on which your DApp is live. Use burner wallet
   targetNetworks: [chains.hardhat],
+  // Once you are satisfied with your contract, can add Conflux Espace and Conflux Testnet for deployment, see below for adding.
+  // targetNetworks: [chains.hardhat, chains.confluxESpaceTestnet, chains.confluxESpace],
 
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect if you only target the local network (default is 4000)

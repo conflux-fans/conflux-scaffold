@@ -1,11 +1,17 @@
-# 🏗 Scaffold-ETH 2
+# 🏗 Conflux Scaffold
 
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
   <a href="https://scaffoldeth.io">Website</a>
 </h4>
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+🧪 This repository modifies the repo Ethereum Scaffold ETH for Conflux ESpace. The main differences are as follows:
+
+- It updates the viem package to 1.19.10 which includes Conflux Espace Testnet as a chain definition. Current Scaffold-ETH-2 only has Conflux Espace. Conflux Espace Testnet Faucet for testfunds can be found in https://efaucet.confluxnetwork.org/. The RPC used by viem is https://evmtestnet.confluxrpc.org but if you find this to be 
+- It adds deployment of hardhat to include Conflux Espace Testnet and Conflux Espace by adding the chains in hardhat.config.ts 
+- It includes a simple example of using the scaffold components of sending conflux from one address to another. This demonstrates how to read and write contracts deployed on Conflux Espace Testnet
+
+This allows developers on Conflux ESpace to leverage the open-source, up-to-date toolkit for building decentralized applications (dapps). It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
 
 ⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
 
@@ -27,13 +33,13 @@ Before you begin, you need to install the following tools:
 
 ## Quickstart
 
-To get started with Scaffold-ETH 2, follow the steps below:
+To get started with Conflux Scaffold, follow the steps below:
 
 1. Clone this repo & install dependencies
 
 ```
-git clone https://github.com/scaffold-eth/scaffold-eth-2.git
-cd scaffold-eth-2
+git clone https://github.com/intrepidcanadian/scaffold-conflux
+cd scaffold-conflux
 yarn install
 ```
 
@@ -43,7 +49,9 @@ yarn install
 yarn chain
 ```
 
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `hardhat.config.ts`.
+This command starts a local Ethereum network using Hardhat. Since Conflux is EVM compatible, we can use hardhat to test the contracts out prior to deploying on the Conflux network. The network runs on your local machine and can be used for testing and development. 
+
+We have adjusted the network configuration in `hardhat.config.ts` to include Conflux ESpace.
 
 3. On a second terminal, deploy the test contract:
 
@@ -51,11 +59,19 @@ This command starts a local Ethereum network using Hardhat. The network runs on 
 yarn deploy
 ```
 
+To deploy the contract on Conflux ESpace or Conflux ESpace Testnet, use 
+
+
+```
+yarn deploy --network Conflux 
+```
+
 This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
 
 4. On a third terminal, start your NextJS app:
 
 ```
+nvm use 18
 yarn start
 ```
 
@@ -69,12 +85,7 @@ Run smart contract test with `yarn hardhat:test`
 
 ## Documentation
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Conflux-Scaffold.
 
-To know more about its features, check out our [website](https://scaffoldeth.io).
+To know more about its features, check out the Scaffold-ETH 2 website [website](https://scaffoldeth.io) for more information
 
-## Contributing to Scaffold-ETH 2
-
-We welcome contributions to Scaffold-ETH 2!
-
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.

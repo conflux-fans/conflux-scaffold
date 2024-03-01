@@ -12,16 +12,16 @@ const imageUrl = `${baseUrl}/thumbnail.jpg`;
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Scaffold-ETH 2 App",
-    template: "%s | Scaffold-ETH 2",
+    default: "Conflux Scaffold App",
+    template: "%s | Conflux Scaffold",
   },
-  description: "Built with 🏗 Scaffold-ETH 2",
+  description: "Build on Conflux with 🏗 Scaffold-ETH 2",
   openGraph: {
     title: {
-      default: "Scaffold-ETH 2 App",
-      template: "%s | Scaffold-ETH 2",
+      default: "Conflux Scaffold App",
+      template: "%s | Build Dapps using Scaffold-ETH 2",
     },
-    description: "Built with 🏗 Scaffold-ETH 2",
+    description: "Conflux App built with 🏗 Scaffold-ETH 2",
     images: [
       {
         url: imageUrl,

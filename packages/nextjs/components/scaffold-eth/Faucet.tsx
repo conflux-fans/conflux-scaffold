@@ -18,7 +18,7 @@ const localWalletClient = createWalletClient({
 });
 
 /**
- * Faucet modal which lets you send ETH to any address.
+ * Faucet modal which lets you send CFX to any address.
  */
 export const Faucet = () => {
   const [loading, setLoading] = useState(false);

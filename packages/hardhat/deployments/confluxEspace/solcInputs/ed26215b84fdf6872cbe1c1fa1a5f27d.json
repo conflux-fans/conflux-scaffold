@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/YourContract.sol": {
+      "content": "//SPDX-License-Identifier: MIT\npragma solidity 0.8.17;\n\ncontract YourContract {\n\t// State Variables\n\taddress public immutable owner;\n\tstring public greeting = \"Building Unstoppable Apps on Conflux!!\";\n\tuint256 public totalCounter = 0;\n\tmapping(address => uint) public userGreetingCounter;\n\t\n\t// Constructor: Called once on contract deployment\n\t// Check packages/hardhat/deploy/00_deploy_your_contract.ts\n\tconstructor(address _owner) {\n\t\towner = _owner;\n\t}\n\n\t// Modifier: used to define a set of rules that must be met before or after a function is executed\n\t// Check the withdraw() function\n\tmodifier isOwner() {\n\t\t// msg.sender: predefined variable that represents address of the account that called the current function\n\t\trequire(msg.sender == owner, \"Not the Owner\");\n\t\t_;\n\t}\n\n\tfunction transferEther(address payable _recipient) public payable {\n        require(msg.value > 0, \"Must send ether to transfer\");\n        _recipient.transfer(msg.value);\n    }\n\n\tfunction setGreeting(string memory _newGreeting) public payable {\n\t\n\t\t// Change state variables\n\t\tgreeting = _newGreeting;\n\t\ttotalCounter += 1;\n\t\tuserGreetingCounter[msg.sender] += 1;\n\t}\n\n\tfunction withdraw() public isOwner {\n\t\t(bool success, ) = owner.call{ value: address(this).balance }(\"\");\n\t\trequire(success, \"Failed to send Ether\");\n\t}\n\n\treceive() external payable {}\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

@@ -1,28 +1,67 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { Address } from "~~/components/scaffold-eth";
+import { Address, Balance } from "~~/components/scaffold-eth";
+import { InputBase } from "~~/components/scaffold-eth";
+import { useScaffoldContract, useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth/index";
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
+  const [newGreetingSubmitted, setNewGreetingSubmitted] = useState<string>("");
+
+  const { data: yourContract } = useScaffoldContract({
+    contractName: "YourContract",
+  });
+
+  console.log("YourContract", yourContract);
+
+  const { data: currentGreeting } = useScaffoldContractRead({
+    contractName: "YourContract",
+    functionName: "greeting",
+  });
+
+  const { writeAsync } = useScaffoldContractWrite({
+    contractName: "YourContract",
+    functionName: "setGreeting",
+    args: [newGreetingSubmitted],
+  });
+
+  const handleSubmitGreeting = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (newGreetingSubmitted) {
+      try {
+        await writeAsync({ args: [newGreetingSubmitted] });
+      } catch (error) {
+        console.error("Error submitting greeting", error);
+      }
+    } else {
+      console.error("No greeting submitted");
+    }
+  };
 
   return (
     <>
       <div className="flex items-center flex-col flex-grow pt-10">
         <div className="px-5">
-          <h1 className="text-center">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
+          <h1>
+            <span
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "2rem",
+                textAlign: "center",
+              }}
+            >
+              Welcome to Conflux Scaffold{" "}
+            </span>
           </h1>
-          <div className="flex justify-center items-center space-x-2">
-            <p className="my-2 font-medium">Connected Address:</p>
-            <Address address={connectedAddress} />
-          </div>
           <p className="text-center text-lg">
-            Get started by editing{" "}
+            Get started by edit ing{" "}
             <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
               packages/nextjs/app/page.tsx
             </code>
@@ -37,6 +76,44 @@ const Home: NextPage = () => {
               packages/hardhat/contracts
             </code>
           </p>
+        </div>
+
+        {/* Sample App on Conflux */}
+        <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
+          <div className="px-5">
+            <div style={{ display: "flex", textAlign: "center", justifyContent: "center" }}>
+              <h1 style={{ fontSize: "2rem" }}>Sample Conflux App</h1>
+            </div>
+            <div className="flex justify-center items-center space-x-2">
+              <p className="my-2 font-medium">Connected Address:</p>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center", flexDirection: "row", paddingBottom: "10px" }}>
+              <Address address={connectedAddress} format="short" size="2xl" />
+              <Balance address={connectedAddress} />
+            </div>
+            <h1 className="text-center text-lg">What Greeting Would You Like to Set?</h1>
+            <form onSubmit={handleSubmitGreeting} style={{ display: "flex", flexDirection: "column" }}>
+              <InputBase
+                name="greet"
+                placeholder="Greeting to be Set"
+                value={newGreetingSubmitted}
+                onChange={setNewGreetingSubmitted}
+              />
+              <button
+                type="submit"
+                style={{
+                  color: "white",
+                  backgroundColor: "black",
+                  borderRadius: "10px",
+                  padding: "1rem",
+                  margin: "1rem",
+                }}
+              >
+                Set Greeting
+              </button>
+            </form>
+            <p style={{ textAlign: "center" }}>Current Greeting is: {String(currentGreeting)}</p>
+          </div>
         </div>
 
         <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">

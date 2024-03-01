@@ -13,7 +13,7 @@ export const useNativeCurrencyPrice = () => {
   const { targetNetwork } = useTargetNetwork();
   const [nativeCurrencyPrice, setNativeCurrencyPrice] = useState(0);
 
-  // Get the price of ETH from Uniswap on mount
+  // Get the price of CFX from Uniswap on mount
   useEffect(() => {
     (async () => {
       const price = await fetchPriceFromUniswap(targetNetwork);
