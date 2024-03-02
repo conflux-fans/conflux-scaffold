@@ -3,6 +3,7 @@
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
   <a href="https://scaffoldeth.io">Website</a>
+  <a href="https://doc.confluxnetwork.org/docs/overview">Conflux Developer Website</a>
 </h4>
 
 🧪 This repository modifies the repo Ethereum Scaffold ETH for Conflux ESpace. The main differences are as follows:
@@ -10,6 +11,10 @@
 - It updates the viem package to 1.19.10 which includes Conflux Espace Testnet as a chain definition. Current Scaffold-ETH-2 only has Conflux Espace. Conflux Espace Testnet Faucet for testfunds can be found in https://efaucet.confluxnetwork.org/. The RPC used by viem is https://evmtestnet.confluxrpc.org but if you find this to be 
 - It adds deployment of hardhat to include Conflux Espace Testnet and Conflux Espace by adding the chains in hardhat.config.ts 
 - It includes a simple example of using the scaffold components of sending conflux from one address to another. This demonstrates how to read and write contracts deployed on Conflux Espace Testnet
+
+You can view the full tutorial of how to build an app quickly on Conflux in this [video](https://youtu.be/33S0IjGGsQg)
+
+![Frontend](./img/FrontEnd.png)
 
 This allows developers on Conflux ESpace to leverage the open-source, up-to-date toolkit for building decentralized applications (dapps). It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
 
@@ -21,7 +26,7 @@ This allows developers on Conflux ESpace to leverage the open-source, up-to-date
 - 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
 - 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+![Debug Contracts tab](./img/ContractInteraction.png)
 
 ## Requirements
 
@@ -61,9 +66,14 @@ yarn deploy
 
 To deploy the contract on Conflux ESpace or Conflux ESpace Testnet, use 
 
+```
+yarn deploy --network ConfluxEspace 
+```
+
+or 
 
 ```
-yarn deploy --network Conflux 
+yarn deploy --network ConfluxEspace 
 ```
 
 This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
@@ -85,7 +95,24 @@ Run smart contract test with `yarn hardhat:test`
 
 ## Documentation
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Conflux-Scaffold.
+Visit our [docs](https://docs.scaffoldeth.io) to learn more components/hooks you can use with Conflux-Scaffold. There is also additional instructions on Conflux Developer Portal [tutorial](https://doc.confluxnetwork.org/docs/overview) which includes a section on using Conflux Scaffold
 
-To know more about its features, check out the Scaffold-ETH 2 website [website](https://scaffoldeth.io) for more information
+## Appendix
 
+The Contract Debug section is powerful for quickly deploying your solidity contract and interacting with the functions
+
+![ContractInteraction](./img/ContractInteraction)
+
+Front-end Interactoion with the Contract is simplified through components and hooks
+
+- Setting up a contract instance of the contract deployed
+
+![ContractInstance](./img/ContractInstance)
+
+- Interacting with Contract to Read
+
+![ContractRead](./img/ContractRead)
+
+- Interacting with Contract to Write
+
+![ContractWrite](./img/ContractWrite)
