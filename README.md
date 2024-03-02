@@ -2,21 +2,21 @@
 
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
+  <a href="https://scaffoldeth.io">Website</a>|
   <a href="https://doc.confluxnetwork.org/docs/overview">Conflux Developer Website</a>
 </h4>
 
 🧪 This repository modifies the repo Ethereum Scaffold ETH for Conflux ESpace. The main differences are as follows:
 
-- It updates the viem package to 1.19.10 which includes Conflux Espace Testnet as a chain definition. Current Scaffold-ETH-2 only has Conflux Espace. Conflux Espace Testnet Faucet for testfunds can be found in https://efaucet.confluxnetwork.org/. The RPC used by viem is https://evmtestnet.confluxrpc.org but if you find this to be 
+- It updates the viem package to 1.19.10 which includes Conflux Espace Testnet as a chain definition. Current Scaffold-ETH-2 only has Conflux Espace. Conflux Espace Testnet Faucet for testfunds can be found in https://efaucet.confluxnetwork.org/.
 - It adds deployment of hardhat to include Conflux Espace Testnet and Conflux Espace by adding the chains in hardhat.config.ts 
-- It includes a simple example of using the scaffold components of sending conflux from one address to another. This demonstrates how to read and write contracts deployed on Conflux Espace Testnet
+- It includes a simple example of interacting with the contract from read/write. It then shows how to change the wallet connection to Conflux Espace and Conflux Espace Testnet and deploying it on vercel
 
 You can view the full tutorial of how to build an app quickly on Conflux in this [video](https://youtu.be/33S0IjGGsQg)
 
 ![Frontend](./img/FrontEnd.png)
 
-This allows developers on Conflux ESpace to leverage the open-source, up-to-date toolkit for building decentralized applications (dapps). It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+This allows developers on Conflux ESpace to leverage the open-source, up-to-date toolkit of Scaffold ETH-2 for building decentralized applications (dapps) on Conflux. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
 
 ⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
 
@@ -43,8 +43,8 @@ To get started with Conflux Scaffold, follow the steps below:
 1. Clone this repo & install dependencies
 
 ```
-git clone https://github.com/intrepidcanadian/scaffold-conflux
-cd scaffold-conflux
+git clone https://github.com/intrepidcanadian/conflux-scaffold
+cd conflux-scaffold
 yarn install
 ```
 
@@ -73,7 +73,7 @@ yarn deploy --network ConfluxEspace
 or 
 
 ```
-yarn deploy --network ConfluxEspace 
+yarn deploy --network ConfluxEspaceTest
 ```
 
 This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
