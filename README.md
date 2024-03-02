@@ -101,18 +101,18 @@ Visit our [docs](https://docs.scaffoldeth.io) to learn more components/hooks you
 
 The Contract Debug section is powerful for quickly deploying your solidity contract and interacting with the functions
 
-![ContractInteraction](./img/ContractInteraction)
+![ContractInteraction](./img/ContractInteraction.png)
 
 Front-end Interactoion with the Contract is simplified through components and hooks
 
 - Setting up a contract instance of the contract deployed
 
-![ContractInstance](./img/ContractInstance)
+![ContractInstance](./img/ContractInstance.png)
 
 - Interacting with Contract to Read
 
-![ContractRead](./img/ContractRead)
+![ContractRead](./img/ContractRead.png)
 
 - Interacting with Contract to Write
 
-![ContractWrite](./img/ContractWrite)
+![ContractWrite](./img/ContractWrite.png)
