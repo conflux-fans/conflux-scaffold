@@ -46,11 +46,11 @@ const config: HardhatUserConfig = {
         enabled: process.env.MAINNET_FORKING_ENABLED === "true",
       },
     },
-    confluxEspaceTest: {
+    confluxESpaceTestnet: {
       url: "https://evmtestnet.confluxrpc.com",
       accounts: [deployerPrivateKey],
     },
-    confluxEspace: {
+    confluxESpace: {
       url: "https://evm.confluxrpc.com",
       accounts: [deployerPrivateKey],
     },
