@@ -43,7 +43,7 @@ To get started with Conflux Scaffold, follow the steps below:
 1. Clone this repo & install dependencies
 
 ```
-git clone https://github.com/intrepidcanadian/conflux-scaffold
+git clone [repository SSH link]
 cd conflux-scaffold
 yarn install
 ```
@@ -67,13 +67,13 @@ yarn deploy
 To deploy the contract on Conflux ESpace or Conflux ESpace Testnet, use 
 
 ```
-yarn deploy --network ConfluxEspace 
+yarn deploy --network confluxESpace 
 ```
 
 or 
 
 ```
-yarn deploy --network ConfluxEspaceTest
+yarn deploy --network confluxESpaceTestnet
 ```
 
 This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
@@ -103,7 +103,7 @@ The Contract Debug section is powerful for quickly deploying your solidity contr
 
 ![ContractInteraction](./img/ContractInteraction.png)
 
-Front-end Interactoion with the Contract is simplified through components and hooks
+Front-end Interaction with the Contract is simplified through components and hooks
 
 - Setting up a contract instance of the contract deployed
 
