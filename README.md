@@ -43,7 +43,7 @@ To get started with Conflux Scaffold, follow the steps below:
 1. Clone this repo & install dependencies
 
 ```
-git clone [repository SSH link]
+git clone https://github.com/conflux-fans/conflux-scaffold
 cd conflux-scaffold
 yarn install
 ```
