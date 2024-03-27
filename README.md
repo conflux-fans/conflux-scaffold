@@ -56,7 +56,7 @@ yarn chain
 
 This command starts a local Ethereum network using Hardhat. Since Conflux is EVM compatible, we can use hardhat to test the contracts out prior to deploying on the Conflux network. The network runs on your local machine and can be used for testing and development. 
 
-We have adjusted the network configuration in `hardhat.config.ts` to include Conflux ESpace. If you are unable to interact with the testnets due to limits, you can switch network RPC endpoints for different regions in the 'hardhat.config.ts' file and re-deploy [network endpoints](https://doc.confluxnetwork.org/docs/espace/network-endpoints). You can also add an API key at the end of the endpoint by purchasing a API key (with faucet tokens) at [confluxhub](https://test.confluxhub.io/payment/consumer/app/subscription/0x4805C5B2741088B8458ed781083eA8940186E477)
+We have adjusted the network configuration in `hardhat.config.ts` to include Conflux ESpace. If you are unable to interact with the testnets due to limits, you can switch network RPC endpoints for different regions in the 'hardhat.config.ts' file and re-deploy [network endpoints](https://doc.confluxnetwork.org/docs/espace/network-endpoints). For example, you can switch from [https://evmtestnet.confluxrpc.com](https://evmtestnet.confluxrpc.com) to [https://evmtestnet.confluxrpc.org](https://evmtestnet.confluxrpc.org). You can also add an API key at the end of the endpoint by purchasing a API key (with faucet tokens) at [confluxhub](https://test.confluxhub.io/payment/consumer/app/subscription/0x4805C5B2741088B8458ed781083eA8940186E477) for increased limits
 
 3. On a second terminal, deploy the test contract:
 
