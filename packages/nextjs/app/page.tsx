@@ -7,7 +7,7 @@ import { useAccount } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Address, Balance } from "~~/components/scaffold-eth";
 import { InputBase } from "~~/components/scaffold-eth";
-import { useScaffoldContract, useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth/index";
+import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth/index";
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
@@ -19,22 +19,21 @@ const Home: NextPage = () => {
 
   console.log("YourContract", yourContract);
 
-  const { data: currentGreeting } = useScaffoldContractRead({
+  const { data: currentGreeting } = useScaffoldReadContract({
     contractName: "YourContract",
     functionName: "greeting",
   });
 
-  const { writeAsync } = useScaffoldContractWrite({
-    contractName: "YourContract",
-    functionName: "setGreeting",
-    args: [newGreetingSubmitted],
-  });
+  const { writeContractAsync: writeYourContractAsync } = useScaffoldWriteContract("YourContract");
 
   const handleSubmitGreeting = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (newGreetingSubmitted) {
       try {
-        await writeAsync({ args: [newGreetingSubmitted] });
+        await writeYourContractAsync({
+          functionName: "setGreeting",
+          args: [newGreetingSubmitted],
+        });
       } catch (error) {
         console.error("Error submitting greeting", error);
       }
@@ -61,7 +60,7 @@ const Home: NextPage = () => {
             </span>
           </h1>
           <p className="text-center text-lg">
-            Get started by edit ing{" "}
+            Get started by editing{" "}
             <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
               packages/nextjs/app/page.tsx
             </code>

@@ -8,7 +8,7 @@
 
 🧪 This repository modifies the repo Ethereum Scaffold ETH for Conflux ESpace. The main differences are as follows:
 
-- It updates the viem package to 1.19.10 which includes Conflux Espace Testnet as a chain definition. Current Scaffold-ETH-2 only has Conflux Espace. Conflux Espace Testnet Faucet for testfunds can be found in https://efaucet.confluxnetwork.org/.
+- It updates the viem package which includes Conflux Espace Testnet as a chain definition. Older versions of Scaffold-ETH-2 only has Conflux Espace. Conflux Espace Testnet Faucet for testfunds can be found in https://efaucet.confluxnetwork.org/.
 - It adds deployment of hardhat to include Conflux Espace Testnet and Conflux Espace by adding the chains in hardhat.config.ts 
 - It includes a simple example of interacting with the contract from read/write. It then shows how to change the wallet connection to Conflux Espace and Conflux Espace Testnet and deploying it on vercel
 
@@ -104,6 +104,8 @@ The Contract Debug section is powerful for quickly deploying your solidity contr
 ![ContractInteraction](./img/ContractInteraction.png)
 
 Front-end Interaction with the Contract is simplified through components and hooks
+
+Note: Code has the latest versions of how contract instances are set up. For example, reading the contract is now useScaffoldReadContract and writing into the contract is now useScaffoldWriteContract. 
 
 - Setting up a contract instance of the contract deployed
 
