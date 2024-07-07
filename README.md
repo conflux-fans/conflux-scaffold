@@ -109,12 +109,28 @@ Note: Code has the latest versions of how contract instances are set up. For exa
 
 - Setting up a contract instance of the contract deployed
 
-![ContractInstance](./img/ContractInstance.png)
+```Javascript
+  const { data: yourContract } = useScaffoldContract({
+    contractName: "YourContract",
+  });
+```
 
 - Interacting with Contract to Read
 
-![ContractRead](./img/ContractRead.png)
+```Javascript
+  const { data: currentGreeting } = useScaffoldReadContract({
+    contractName: "YourContract",
+    functionName: "greeting",
+  });
+```
 
 - Interacting with Contract to Write
 
-![ContractWrite](./img/ContractWrite.png)
+```Javascript
+  const { writeContractAsync: writeYourContractAsync } = useScaffoldWriteContract("YourContract");
+
+   await writeYourContractAsync({
+      functionName: "setGreeting",
+      args: [newGreetingSubmitted],
+   });
+```
