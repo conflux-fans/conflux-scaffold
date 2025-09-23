@@ -1,5 +1,14 @@
 # Repository Guidelines
 
+## Project Context
+This repo adapts Scaffold-ETH 2 for Conflux eSpace so the `packages/hardhat` workspace can author and deploy Solidity contracts to Conflux networks while `packages/nextjs` renders the accompanying dapp. The default flows target Conflux eSpace Testnet for iteration before switching configuration to the Conflux eSpace Mainnet when you are ready to launch. Both workspaces share TypeChain bindings and synced ABIs so contract changes propagate to the frontend without manual wiring.
+
+## Conflux Quick Facts
+- Conflux eSpace is the EVM-compatible environment that pairs with the native Tree-Graph consensus layer, so Hardhat tasks and MetaMask behave like standard Ethereum tooling while benefiting from Conflux throughput.
+- Gas is paid in `CFX` (18 decimals). The public RPCs are `https://evmtestnet.confluxrpc.com` (Testnet, chain id 71) and `https://evm.confluxrpc.com` (Mainnet, chain id 1030).
+- Block explorers live at `https://evmtestnet.confluxscan.net` for Testnet and `https://evm.confluxscan.net` for Mainnet. Share these links alongside deployed addresses for verification.
+- Testnet CFX is available through the faucet at https://efaucet.confluxnetwork.org and requires a Conflux Portal wallet address.
+
 ## Project Structure & Module Organization
 Yarn 3 workspaces split on-chain code in `packages/hardhat` from the Next.js dapp in `packages/nextjs`. Hardhat organises Solidity in `contracts/`, deploy logic in `deploy/`, task helpers in `scripts/`, and generated outputs under `deployments/` and `typechain-types/`. The frontend keeps routes in `app/`, UI primitives in `components/`, shared logic in `services/` and `utils/`, types in `types/`, and synced ABIs in `contracts/`.
 
